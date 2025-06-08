@@ -1,181 +1,158 @@
 /******************
  * YOUR CODE HERE *
  ******************/
-function xify(str) {
-  let result = '';
-  for (let i = 0; i < str.length; i++) {
-    result += 'x';
+function xify(str){
+  let result =""; 
+  
+  for(let i =0; i < str.length; i++){
+    result+= "x";
   }
   return result;
 }
 
-function yellingChars(str) {
-  let result = '';
-  for (let i = 0; i < str.length; i++) {
-    result += str[i] + '!';
+console.log(xify("hello"));
+console.log(xify("hi there"));
+
+function yellingChars(str){
+  let result ="";
+
+  for(let i =0; i <str.length; i++){
+    result += str[i] + "!";
   }
+
   return result;
 }
 
-function indexedChars(str) {
-  let result = '';
-  for (let i = 0; i < str.length; i++) {
+console.log(yellingChars("goodness"));
+console.log(yellingChars("oh hello"));
+
+function indexedChars(str){
+  let result = "";
+
+  for (let i = 0; i < str.length; i++){
     result += i + str[i];
   }
   return result;
-}
+} 
 
-function numberedChars(str) {
-  let result = '';
-  for (let i = 0; i < str.length; i++) {
-    result += `(${i + 1})` + str[i];
+console.log(indexedChars("hello"));
+console.log(indexedChars("bye"));
+
+function numberedChars(str){
+  let result = "";
+
+  for (let i =0; i < str.length; i++){
+    result += "("+(i + 1) + ")" +str[i];
   }
+
   return result;
 }
 
-function exclaim(str) {
-  let result = '';
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] === '?' || str[i] === '.') {
-      result += '!';
-    } else {
+console.log(numberedChars("hello"));
+console.log(numberedChars("bye"));
+
+function exclaim(str){
+  let result = "";
+
+  for (let i = 0; i < str.length; i++){
+    if (str[i] === "." || str[i] === "?"){
+      result += "!";
+    }else {
       result += str[i];
     }
   }
+
   return result;
 }
 
-function repeatIt(str, n) {
-  let result = '';
-  for (let i = 0; i < n; i++) {
+console.log(exclaim("What are you doing? Are you a fool?"));
+console.log(exclaim("This is fine?"));
+
+function repeatIt(str, n){
+  let result = "";
+
+  for (let i = 0; i < n; i++){
     result += str;
   }
+
   return result;
 }
 
-function truncate(str) {
-  if (str.length > 18) {
-    let result = '';
-    for (let i = 0; i < 15; i++) {
-      result += str[i];
-    }
-    return result + '...';
-  } else {
-    return str;
-  }
-}
+console.log(repeatIt("beetlejuice", 3));
+console.log(repeatIt("oh hi!", 8));
 
-function emailify(str) {
-  let first = '';
-  let last = '';
-  let spaceFound = false;
-  for (let i = 0; i < str.length; i++) {
-    let c = str[i].toLowerCase();
-    if (c === ' ') {
-      spaceFound = true;
-    } else if (!spaceFound) {
-      first += c;
-    } else {
-      last += c;
-    }
-  }
-  return first[0] + last + '.prsvr@gmail.com';
-}
+function truncate(str){
+  let result = "";
 
-function reverse(str) {
-  let result = '';
-  for (let i = str.length - 1; i >= 0; i--) {
+  for (let i = 0; i <15 && i <str.length; i++){
     result += str[i];
   }
+
+  if (str.length > 15){
+    result += "...";
+  }
   return result;
 }
 
-function onlyVowels(str) {
-  let result = '';
-  for (let i = 0; i < str.length; i++) {
-    let c = str[i].toLowerCase();
-    if (c === 'a' || c === 'e' || c === 'i' || c === 'o' || c === 'u') {
+console.log(truncate("The fault, dear Brutus, is not our stars, but in ourselves."));
+console.log(truncate("Well, thats just, like, your opinion man."))
+
+function emailify(name){
+  let first = "";
+  let last = "";
+  let spaceFound = false;
+
+  for (let i = 0; i < name.length; i++){
+    if (name[i] === " "){
+      spaceFound = true;
+    }else if (!spaceFound){
+      first += name[i].toLowerCase();
+    }else{
+      last += name[i].toLowerCase();
+    }
+    }
+    
+    let email = first[0] + last + ".prsvr@gmail.com";
+    return email;
+  }
+
+
+console.log(emailify("chris gross"));
+console.log(emailify("james gross"));
+
+function reverse(str){
+  let result = "";
+
+  for (let i = str.length -1; i >= 0; i--){
+    result += str[i];
+  }
+
+  return result;
+}
+
+console.log(reverse("chris"));
+console.log(reverse("gross"));
+
+function onlyVowels(str){
+  let result = "";
+  let vowels = "aeiouAEIOU";
+
+  for (let i = 0; i < str.length; i++){
+    if (vowels.includes(str[i])){
       result += str[i];
     }
   }
+
   return result;
 }
 
-// Stretch Goals
+console.log(onlyVowels("chris gross"));
+console.log(onlyVowels("quickly"));
+console.log(onlyVowels("james gross"))
 
-function crazyCase(str) {
-  let result = '';
-  for (let i = 0; i < str.length; i++) {
-    result += i % 2 === 0
-      ? str[i].toLowerCase()
-      : str[i].toUpperCase();
-  }
-  return result;
-}
 
-function titleCase(str) {
-  let result = '';
-  let newWord = true;
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] === ' ') {
-      result += str[i];
-      newWord = true;
-    } else {
-      result += newWord
-        ? str[i].toUpperCase()
-        : str[i].toLowerCase();
-      newWord = false;
-    }
-  }
-  return result;
-}
 
-function camelCase(str) {
-  let result = '';
-  let newWord = false;
-  for (let i = 0; i < str.length; i++) {
-    let c = str[i];
-    if (c === ' ') {
-      newWord = true;
-    } else {
-      result += newWord ? c.toUpperCase() : c.toLowerCase();
-      newWord = false;
-    }
-  }
-  return result;
-}
 
-function crazyCase2ReturnOfCrazyCase(str) {
-  let result = '';
-  let count = 0;
-  for (let i = 0; i < str.length; i++) {
-    let c = str[i];
-    if (c === ' ') {
-      result += c;
-    } else {
-      result += count % 2 === 0 ? c.toLowerCase() : c.toUpperCase();
-      count++;
-    }
-  }
-  return result;
-}
-
-module.exports = {
-  xify,
-  yellingChars,
-  indexedChars,
-  numberedChars,
-  exclaim,
-  repeatIt,
-  truncate,
-  emailify,
-  reverse,
-  onlyVowels,
-  crazyCase,
-  titleCase,
-  camelCase,
-  crazyCase2ReturnOfCrazyCase,
-};
 
 
 
